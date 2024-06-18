@@ -1,0 +1,99 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='review_styles.css') }}" />
+</head>
+<body>
+   <div class="review-container">
+    <img src="{{ url_for('static', filename='Gymbuddy.jpg') }}" alt="Gymbuddy" class="logo">
+        <h2>Review Your Profile</h2>
+        <form action="/submit-profile" method="post">
+            <p><strong>Name:</strong> {{ profile_data.name }}</p>
+            <p><strong>Age:</strong> {{ profile_data.age }}</p>
+            <p><strong>Gender:</strong> {{ profile_data.gender }}</p>
+            <p><strong>Height:</strong> {{ profile_data.height }} cm</p>
+            <p><strong>Weight:</strong> {{ profile_data.weight }} kg</p>
+            <p><strong>Preferred Time 1:</strong> {{ profile_data.preferred_time1 }}</p>
+            <p><strong>Preferred Time 2:</strong> {{ profile_data.preferred_time2 }}</p>
+            <p><strong>Goals:</strong> {{ profile_data.goals }}</p>
+            <p><strong>Experience in Gym:</strong> {{ profile_data.experience_in_gym }}</p>
+            <p><strong>Workout Duration:</strong> {{ profile_data.workout_duration }}</p>
+            <p><strong>Preferred Gym Location:</strong> {{ profile_data.pref_gym_location }}</p>
+            <p><strong>Travel Frequency:</strong> {{ profile_data.travel_freq }}</p>
+            <p><strong>Preferred Buddy Age:</strong> {{ profile_data.pref_buddy_age }}</p>
+            <p><strong>Preferred Buddy Gender:</strong> {{ profile_data.pref_buddy_gender }}</p>
+
+            <button type="submit">Submit Profile</button>
+            <button type="button" onclick="history.back()">Edit Profile</button>
+        </form> 
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='review_styles.css') }}" />
+</head>
+<body>
+   <div class="review-container">
+    <img src="{{ url_for('static', filename='Gymbuddy.jpg') }}" alt="Gymbuddy" class="logo">
+        <h2>Review Your Profile</h2>
+        <form action="/submit-profile" method="post">
+            <p><strong>Email:</strong> {{ profile_data.mail_id }}</p>
+            <input type="hidden" name="mail_id" value="{{ profile_data.mail_id }}">
+
+            <p><strong>Name:</strong> {{ profile_data.name }}</p>
+            <input type="hidden" name="name" value="{{ profile_data.name }}">
+            
+            <p><strong>Age:</strong> {{ profile_data.age }}</p>
+            <input type="hidden" name="age" value="{{ profile_data.age }}">
+            
+            <p><strong>Gender:</strong> {{ profile_data.gender }}</p>
+            <input type="hidden" name="gender" value="{{ profile_data.gender }}">
+            
+            <p><strong>Height:</strong> {{ profile_data.height }} cm</p>
+            <input type="hidden" name="height" value="{{ profile_data.height }}">
+            
+            <p><strong>Weight:</strong> {{ profile_data.weight }} kg</p>
+            <input type="hidden" name="weight" value="{{ profile_data.weight }}">
+            
+            <p><strong>Preferred Time 1:</strong> {{ profile_data.preferred_time1 }}</p>
+            <input type="hidden" name="preferred-time1" value="{{ profile_data.preferred_time1 }}">
+            
+            <p><strong>Preferred Time 2:</strong> {{ profile_data.preferred_time2 }}</p>
+            <input type="hidden" name="preferred-time2" value="{{ profile_data.preferred_time2 }}">
+            
+            <p><strong>Goals:</strong> {{ profile_data.goals }}</p>
+            <input type="hidden" name="goals" value="{{ profile_data.goals }}">
+            
+            <p><strong>Experience in Gym:</strong> {{ profile_data.experience_in_gym }}</p>
+            <input type="hidden" name="experience-in-gym" value="{{ profile_data.experience_in_gym }}">
+            
+            <p><strong>Workout Duration:</strong> {{ profile_data.workout_duration }}</p>
+            <input type="hidden" name="workout-duration" value="{{ profile_data.workout_duration }}">
+            
+            <p><strong>Preferred Gym Location:</strong> {{ profile_data.pref_gym_location }}</p>
+            <input type="hidden" name="pref-gym-location" value="{{ profile_data.pref_gym_location }}">
+            
+            <p><strong>Travel Frequency:</strong> {{ profile_data.travel_freq }}</p>
+            <input type="hidden" name="travel-freq" value="{{ profile_data.travel_freq }}">
+            
+            <p><strong>Preferred Buddy Age:</strong> {{ profile_data.pref_buddy_age }}</p>
+            <input type="hidden" name="pref-buddy-age" value="{{ profile_data.pref_buddy_age }}">
+            
+            <p><strong>Preferred Buddy Gender:</strong> {{ profile_data.pref_buddy_gender }}</p>
+            <input type="hidden" name="pref-buddy-gender" value="{{ profile_data.pref_buddy_gender }}">
+            
+            <button type="submit">Submit Profile</button>
+            <button type="button" onclick="history.back()">Edit Profile</button>
+        </form> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #04a3dd;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 15px;
+    text-align: center;
+}
+
+.login-image {
+    width: 50%; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio of the image */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    margin-bottom: 20px; /* Add some space below the image */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.login-container h2 {
+    margin-bottom: 15px;
+}
+
+.login-container label {
+    display: grid;
+    margin-bottom: 15px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: #ccc transparent;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+.login-container input[type="submit"]:hover {
+    background-color: #0056b3;
+    color: yellow;
+    border: 1px solid #004080;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007BFF;
+    color: white;
+    border: double;
+    border-radius: 5px;
+    cursor: grabbing;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.login-container .forgot-password:hover {
+    color: white;
+    text-decoration: underline;
+    background-color: darkblue;
+}
+
+.login-container button:hover{
+    background-color: black;
+}
+
+.alert {
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}

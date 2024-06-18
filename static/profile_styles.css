@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.profile-container {
+    width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #04a3dd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-image {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input,
+select {
+    width: 75%;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px transparent #ccc; /* Fix border styling */
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007BFF;
+    color: white;
+    border: double;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
