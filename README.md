@@ -20,4 +20,13 @@ Once the submission is done, the details will added to the database. <br />
 I used Flask framework for deployment.
 * Once the data is finally submitted, there is an option to download the data from the table as an excel so that analysis can be performed.
 
+____
+
 ### Google Cloud Console
+
+#### Features used in Google Cloud Console :
+  - Creating a project
+  - Compute Engine - To create a Virtual Machine Instance
+  - Cloud Storage - To store the Dataset (Flat files - ex. csv, xlsx files)
+  - BigQuery - To do Analysis on the data
+  - Looker Studio - To do Data visualization on the data
