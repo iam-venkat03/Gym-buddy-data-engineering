@@ -50,5 +50,10 @@ ____
 * In Looker Studio, we can connect to Big Query to fetch the table we needed.
 * Using Looker, I created a report that would give Gender based Analysis, Preferred Time based Analysis etc.. You can view the report Here : [GymBuddy Report](https://lookerstudio.google.com/reporting/27e74745-1f7c-4264-9ab5-598c5779e042)
 
-  Reference Video :
-  [![Youtube Link to that video](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)]([http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://www.youtube.com/watch?v=WpQECq5Hx9g&list=PL84EAfzsRsnUzXcAbQsrrm6xia2pSRiO9))
+###  Reference Video :
+<a href="https://www.youtube.com/watch?v=WpQECq5Hx9g&list=PL84EAfzsRsnUzXcAbQsrrm6xia2pSRiO9"
+target="_blank"><img src="https://t3.ftcdn.net/jpg/04/74/05/94/360_F_474059464_qldYuzxaUWEwNTtYBJ44VN89ARuFktHW.jpg" 
+alt="Reference Youtube Video Link" width="240" height="180" border="10" /></a>
+
+
+## THANKS!
