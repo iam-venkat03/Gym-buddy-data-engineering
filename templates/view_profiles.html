@@ -117,9 +117,11 @@
                 {% endfor %}
             </tbody>
         </table>
-        <button id="download-excel">Download as Excel</button>
-    </div>
+        <button id="download-excel">Download as a CSV File</button>
+        <button onclick="window.location.href='{{ url_for('recommend_buddy') }}'">See your recommended buddy</button>
 
+    </div>
+    
     <script src="../static/download_excel.js"></script>
 </body>
 </html>
