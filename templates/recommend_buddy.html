@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Buddies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recommend_buddy_styles.css') }}" />
+</head>
+<body>
+    <div class="profile-info">
+        {% if current_user %}
+        <h1>Welcome, {{ current_user[3] }}</h1>
+
+        Details entered by : <br>
+        <p>&emsp; Username: {{ current_user[1] }}</p>
+        {% else %}
+        <p>User profile not found.</p>
+        {% endif %}
+    </div>
+
+    <div class="recommended-buddies-container">
+        <h2>Your Details</h2>
+        <table>
+            <tr><td>ID</td><td>{{ current_user[0] }}</td></tr>
+            <tr><td>Username</td><td>{{ current_user[1] }}</td></tr>
+            <tr><td>Mail ID</td><td>{{ current_user[2] }}</td></tr>
+            <tr><td>Name</td><td>{{ current_user[3] }}</td></tr>
+            <tr><td>Age</td><td>{{ current_user[4] }}</td></tr>
+            <tr><td>Gender</td><td>{{ current_user[5] }}</td></tr>
+            <tr><td>Height (cm)</td><td>{{ current_user[6] }}</td></tr>
+            <tr><td>Weight (kg)</td><td>{{ current_user[7] }}</td></tr>
+            <tr><td>Preferred Time 1</td><td>{{ current_user[8] }}</td></tr>
+            <tr><td>Preferred Time 2</td><td>{{ current_user[9] }}</td></tr>
+            <tr><td>Goals</td><td>{{ current_user[10] }}</td></tr>
+            <tr><td>Experience in Gym</td><td>{{ current_user[11] }}</td></tr>
+            <tr><td>Workout Duration</td><td>{{ current_user[12] }}</td></tr>
+            <tr><td>Preferred Gym Location</td><td>{{ current_user[13] }}</td></tr>
+            <tr><td>Travel Frequency</td><td>{{ current_user[14] }}</td></tr>
+            <tr><td>Preferred Buddy Age</td><td>{{ current_user[15] }}</td></tr>
+            <tr><td>Preferred Buddy Gender</td><td>{{ current_user[16] }}</td></tr>
+        </table>
+
+        <h2>Your Recommended Buddies</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Mail ID</th>
+                    <th>Similarity Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for buddy, score in buddies_with_scores %}
+                    <tr>
+                        <td>{{ buddy[0] }}</td>
+                        <td>{{ buddy[3] }}</td>
+                        <td>{{ buddy[2] }}</td>
+                        <td>{{ "%.4f" % score }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button onclick="window.location.href='{{ url_for('view_profiles') }}'">Back to Profiles</button>
+    </div>
+</body>
+</html>
