@@ -10,7 +10,7 @@ The ultimate goal is to analyze the data and recommend a gym buddy (hence the na
 
 ### Front end development (HTML, CSS, JS)
  
-* In this project, I developed a web application that allows users to input details such as age, gender, height, weight, preferred gym time, and gym goals.
+* In this project, I developed a web application that allows users to input details such as age, gender, height, weight, preferred gym time, gym goals, etc..
 * The entered details can be reviewed before final submission.
 * Once submitted, the details are added to the database.
 * The database used is SQLite3, which comes pre-installed with Python.
