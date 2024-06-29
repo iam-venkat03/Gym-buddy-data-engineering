@@ -1,65 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Profiles</title>
-    <link rel="stylesheet" href="../static/view_profiles_styles.css" />
-</head>
-<body>
-    <div class="view-profiles-container">
-        <h2>Stored Profiles</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Mail ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Height (cm)</th>
-                    <th>Weight (kg)</th>
-                    <th>Preferred Time 1</th>
-                    <th>Preferred Time 2</th>
-                    <th>Goals</th>
-                    <th>Experience in Gym</th>
-                    <th>Workout Duration</th>
-                    <th>Preferred Gym Location</th>
-                    <th>Travel Frequency</th>
-                    <th>Preferred Buddy Age</th>
-                    <th>Preferred Buddy Gender</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for profile in profiles %}
-                    <tr>
-                        <td>{{ profile[0] }}</td>
-                        <td>{{ profile[1] }}</td>
-                        <td>{{ '*' * (profile[2]|length - 3) + profile[2][-3:] }}</td>
-                        <td>{{ profile[3] }}</td>
-                        <td>{{ profile[4] }}</td>
-                        <td>{{ profile[5] }}</td>
-                        <td>{{ profile[6] }}</td>
-                        <td>{{ profile[7] }}</td>
-                        <td>{{ profile[8] }}</td>
-                        <td>{{ profile[9] }}</td>
-                        <td>{{ profile[10] }}</td>
-                        <td>{{ profile[11] }}</td>
-                        <td>{{ profile[12] }}</td>
-                        <td>{{ profile[13] }}</td>
-                        <td>{{ profile[14] }}</td>
-                        <td>{{ profile[15] }}</td>
-                        <td>{{ profile[16] }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,55 +9,64 @@
 <body>
     <div class="view-profiles-container">
         <h2>Stored Profiles</h2>
-        <table id="profiles-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Mail ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Height (cm)</th>
-                    <th>Weight (kg)</th>
-                    <th>Preferred Time 1</th>
-                    <th>Preferred Time 2</th>
-                    <th>Goals</th>
-                    <th>Experience in Gym</th>
-                    <th>Workout Duration</th>
-                    <th>Preferred Gym Location</th>
-                    <th>Travel Frequency</th>
-                    <th>Preferred Buddy Age</th>
-                    <th>Preferred Buddy Gender</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for profile in profiles %}
+        <div id="profiles-table-container">
+            <table id="profiles-table">
+                <thead>
                     <tr>
-                        <td>{{ profile[0] }}</td>
-                        <td>{{ profile[1] }}</td>
-                        <td data-original-email="{{ profile[2] }}">{{ '*' * (profile[2]|length - 3) + profile[2][-3:] }}</td> <!-- Masked Email ID -->
-                        <td>{{ profile[3] }}</td>
-                        <td>{{ profile[4] }}</td>
-                        <td>{{ profile[5] }}</td>
-                        <td>{{ profile[6] }}</td>
-                        <td>{{ profile[7] }}</td>
-                        <td>{{ profile[8] }}</td>
-                        <td>{{ profile[9] }}</td>
-                        <td>{{ profile[10] }}</td>
-                        <td>{{ profile[11] }}</td>
-                        <td>{{ profile[12] }}</td>
-                        <td>{{ profile[13] }}</td>
-                        <td>{{ profile[14] }}</td>
-                        <td>{{ profile[15] }}</td>
-                        <td>{{ profile[16] }}</td>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Mail ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Height (cm)</th>
+                        <th>Weight (kg)</th>
+                        <th>Preferred Time 1</th>
+                        <th>Preferred Time 2</th>
+                        <th>Goals</th>
+                        <th>Experience in Gym</th>
+                        <th>Workout Duration</th>
+                        <th>Preferred Gym Location</th>
+                        <th>Travel Frequency</th>
+                        <th>Preferred Buddy Age</th>
+                        <th>Preferred Buddy Gender</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <button id="download-excel">Download as a CSV File</button>
-        <button onclick="window.location.href='{{ url_for('recommend_buddy') }}'">See your recommended buddy</button>
-
+                </thead>
+                <tbody>
+                    {% for profile in profiles %}
+                        <tr>
+                            <td>{{ profile[0] }}</td>
+                            <td>{{ profile[1] }}</td>
+                            <td data-original-email="{{ profile[2] }}">{{ '*' * (profile[2]|length - 3) + profile[2][-3:] }}</td>
+                            <td>{{ profile[3] }}</td>
+                            <td>{{ profile[4] }}</td>
+                            <td>{{ profile[5] }}</td>
+                            <td>{{ profile[6] }}</td>
+                            <td>{{ profile[7] }}</td>
+                            <td>{{ profile[8] }}</td>
+                            <td>{{ profile[9] }}</td>
+                            <td>{{ profile[10] }}</td>
+                            <td>{{ profile[11] }}</td>
+                            <td>{{ profile[12] }}</td>
+                            <td>{{ profile[13] }}</td>
+                            <td>{{ profile[14] }}</td>
+                            <td>{{ profile[15] }}</td>
+                            <td>{{ profile[16] }}</td>
+                            <td>
+                                <form action="{{ url_for('recommend_buddy_for_user') }}" method="post">
+                                    <input type="hidden" name="profile_id" value="{{ profile[0] }}">
+                                    <button type="submit">See Recommended Buddy</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="button-container">
+            <button id="download-excel">Download as a CSV File</button>
+        </div>
     </div>
     
     <script src="../static/download_excel.js"></script>

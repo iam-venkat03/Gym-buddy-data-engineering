@@ -3,7 +3,7 @@ import sqlite3
 import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 
 app = Flask(__name__)
@@ -142,32 +142,35 @@ def view_profiles():
     else:
         return redirect(url_for('index'))
 
-@app.route('/recommend-buddy')
-def recommend_buddy():
+
+@app.route('/recommend-buddy-for-user', methods=['POST'])
+def recommend_buddy_for_user():
     if 'username' in session:
+        profile_id = request.form['profile_id']
+        
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
         
-        # Fetch the latest profile ID for the current user
-        cursor.execute("SELECT * FROM profiles ORDER BY id DESC LIMIT 1")
-        current_user = cursor.fetchone()
+        # Fetch the selected user profile
+        cursor.execute("SELECT * FROM profiles WHERE id = ?", (profile_id,))
+        selected_user = cursor.fetchone()
         
-        if current_user is None:
-            flash('Profile not found.', 'error')
-            return redirect(url_for('profile'))
+        if selected_user is None:
+            flash('Selected profile not found.', 'error')
+            return redirect(url_for('view_profiles'))
 
-        # Fetch all profiles except the current user's latest profile
-        cursor.execute("SELECT * FROM profiles WHERE id != ?", (current_user[0],))
+        # Fetch all profiles except the selected user
+        cursor.execute("SELECT * FROM profiles WHERE id != ?", (profile_id,))
         other_users = cursor.fetchall()
         conn.close()
         
         if not other_users:
             flash('No other users found.', 'error')
-            return redirect(url_for('profile'))
+            return redirect(url_for('view_profiles'))
 
         # Convert profiles to pandas DataFrame for easier manipulation
         columns = ['id', 'username', 'mail_id', 'name', 'age', 'gender', 'height', 'weight', 'preferred_time1', 'preferred_time2', 'goals', 'experience_in_gym', 'workout_duration', 'pref_gym_location', 'travel_freq', 'pref_buddy_age', 'pref_buddy_gender']
-        all_users_df = pd.DataFrame([current_user] + list(other_users), columns=columns)
+        all_users_df = pd.DataFrame([selected_user] + list(other_users), columns=columns)
 
         # Separate numerical and categorical columns
         numerical_columns = ['age', 'height', 'weight', 'pref_buddy_age']
@@ -175,19 +178,26 @@ def recommend_buddy():
 
         # Handle numerical data
         numerical_data = all_users_df[numerical_columns].astype(float)
+        scaler = StandardScaler()
+        scaled_numerical_data = scaler.fit_transform(numerical_data)
 
         # Handle categorical data with one-hot encoding
         categorical_data = all_users_df[categorical_columns]
         encoder = OneHotEncoder(sparse_output=False)
         encoded_categorical_data = encoder.fit_transform(categorical_data)
 
+        # Assign weights to different features (weights can be adjusted based on feature importance)
+        numerical_weights = np.array([1.0, 1.0, 1.0, 1.0])  # Adjust weights for numerical columns
+        categorical_weights = np.ones(encoded_categorical_data.shape[1])  # Adjust weights for categorical columns
+        combined_weights = np.concatenate((numerical_weights, categorical_weights))
+
         # Combine numerical and encoded categorical data
-        combined_data = np.hstack((numerical_data, encoded_categorical_data))
+        combined_data = np.hstack((scaled_numerical_data, encoded_categorical_data)) * combined_weights
 
         # Calculate cosine similarity
-        current_user_data = combined_data[0].reshape(1, -1)
+        selected_user_data = combined_data[0].reshape(1, -1)
         other_users_data = combined_data[1:]
-        similarity_scores = cosine_similarity(current_user_data, other_users_data)[0]
+        similarity_scores = cosine_similarity(selected_user_data, other_users_data)[0]
 
         # Combine the other users with their similarity scores
         buddies_with_scores = [(other_users[i], similarity_scores[i]) for i in range(len(other_users))]
@@ -195,10 +205,9 @@ def recommend_buddy():
         # Sort the buddies by similarity score in descending order
         buddies_with_scores = sorted(buddies_with_scores, key=lambda x: x[1], reverse=True)
 
-        return render_template('recommend_buddy.html', current_user=current_user, buddies_with_scores=buddies_with_scores)
+        return render_template('recommend_buddy.html', current_user=selected_user, buddies_with_scores=buddies_with_scores)
     else:
         return redirect(url_for('index'))
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
-

@@ -1,4 +1,4 @@
-.view-profiles-container {
+/* .view-profiles-container {
     width: 90%;
     margin: auto;
     margin-top: 20px;
@@ -26,4 +26,85 @@ th, td {
 
 th {
     background-color: #f2f2f2;
+} */
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: #333;
+    margin: 0;
+    padding: 20px; /* Added padding to avoid content touching edges */
+    display: flex;
+    flex-direction: column; /* Changed to column layout */
+    align-items: center;
+}
+
+.logo {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.view-profiles-container {
+    background-color: #04a3dd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 90%;
+    margin: 20px auto;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    color: black;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#profiles-table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin-top: 20px;
 }
